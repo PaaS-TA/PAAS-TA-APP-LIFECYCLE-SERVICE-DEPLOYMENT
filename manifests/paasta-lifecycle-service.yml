@@ -1,0 +1,91 @@
+---
+name: ((deployment_name))                    # 서비스 배포이름(필수) 
+
+releases:
+- name: ((service_release_name))             # 서비스 릴리즈 이름(필수)
+  version: ((service_release_version))       # 서비스 릴리즈 버전(필수):latest 시 업로드된 서비스 릴리즈 최신버전
+
+stemcells:
+- alias: default
+  os: ((stemcell_os))
+  version: ((stemcell_version))
+
+update:
+  canaries: 3                                # canary 인스턴스 수(필수)
+  canary_watch_time: 30000-300000            # canary 인스턴스가 수행하기 위한 대기 시간milliseconds (필수)
+  max_in_flight: 10                          # non-canary 인스턴스가 병렬로 update 하는 최대 개수(필수)
+  update_watch_time: 10000-300000            # non-canary 인스턴스가 수행하기 위한 대기 시간milliseconds (필수)
+  serial: true
+
+instance_groups:
+- name: taiga                                # 작업 이름
+  azs: ((taiga_azs))
+  instances: 1                               # job 인스턴스 수
+  vm_type: ((vm_type_default))               # cloud config 에 정의한 vm_type
+  stemcell: default
+  networks:
+  - name: ((public_networks_name))
+    static_ips: ((public_networks_ips))      # 사용할 IP addresses 정의
+  - name: ((private_networks_name))          # cloud config 에 정의한 network 이름
+  jobs:
+  - name: taiga                              # job template 이름
+    release: ((service_release_name))
+
+- name: mariadb
+  azs: ((mariadb_azs))
+  instances: ((mariadb_instances))
+  persistent_disk_type: ((mariadb_persistent_disk_type))
+  vm_type: ((vm_type_default))
+  stemcell: default
+  networks:
+  - name: ((private_networks_name))
+  jobs:
+  - name: mariadb
+    release: ((service_release_name))
+    properties:
+      port: ((mariadb_port))
+      admin:
+        password: ((mariadb_admin_password))
+      service:
+        username: ((mariadb_service_username))
+        password: ((mariadb_service_password))
+  update:
+    max_in_flight: 1
+
+- name: service-broker
+  azs: ((broker_azs))
+  instances: ((broker_instances))
+  vm_type: ((vm_type_default))
+  stemcell: default
+  networks:
+  - name: ((private_networks_name))
+  jobs:
+  - name: service-broker
+    release: ((service_release_name))
+    properties:
+      port: ((broker_port))
+      logging:
+        level_broker: ((broker_logging_level_broker))
+        level_hibernate: ((broker_logging_level_hibernate))
+      dashboard:
+        url: ((broker_dashboard_url))         # NOT SUPPORT
+      services:
+        id: ((broker_services_id))
+        plans:
+          id: ((broker_services_plans_id))
+      bosh:
+        deployment_name: ((deployment_name))
+        instance_name: ((taiga_service_instance_name))
+    update:
+    max_in_flight: 1
+
+properties:
+  taiga:
+    user: ((taiga_user))
+    port: ((taiga_port))
+  postgresql:                                 # POSTGRESQL SERVER 설정 정보
+    user: ((postgresql_user))
+    password: ((postgresql_password))
+    db:
+      name: ((postgresql_db_name))
+  public_networks_ips: ((public_networks_ips))

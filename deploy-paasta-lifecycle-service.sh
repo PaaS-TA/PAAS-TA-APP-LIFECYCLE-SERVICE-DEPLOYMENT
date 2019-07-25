@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # VARIABLES
-DEPLOYMENT_NAME="paasta-app-lifecycle-service"
-BOSH2_NAME="micro-bosh"
+DEPLOYMENT_NAME="paasta-lifecycle-service"
+BOSH2_NAME="micro-bosh-dev"
 
 # DEPLOY
 bosh -e ${BOSH2_NAME} -n -d ${DEPLOYMENT_NAME} deploy --no-redact manifests/${DEPLOYMENT_NAME}.yml \
