@@ -83,8 +83,9 @@ properties:
   taiga:
     user: ((taiga_user))
     port: ((taiga_port))
+    admin:
+      password: ((taiga_admin_password))
   postgresql:                                 # POSTGRESQL SERVER 설정 정보
-    user: ((postgresql_user))
     password: ((postgresql_password))
     db:
       name: ((postgresql_db_name))
