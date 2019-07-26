@@ -19,8 +19,6 @@ public_networks_ips: "[public_ips]" # [111.11.11.111,222.22.22.222,333.33.33.333
 
 # TAIGA
 taiga_azs: [z5]
-taiga_user: taiga
-taiga_port: 80
 taiga_admin_password: "<TAIGA_ADMIN_PASSWORD>"
 postgresql_password: "<POSTGRES_PASSWORD>"
 postgresql_db_name: taiga

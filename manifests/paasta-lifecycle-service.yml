@@ -81,8 +81,6 @@ instance_groups:
 
 properties:
   taiga:
-    user: ((taiga_user))
-    port: ((taiga_port))
     admin:
       password: ((taiga_admin_password))
   postgresql:                                 # POSTGRESQL SERVER 설정 정보
