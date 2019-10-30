@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # VARIABLES
-DEPLOYMENT_NAME="paasta-lifecycle-service"
-BOSH2_NAME="micro-bosh-dev"
+DEPLOYMENT_NAME="paasta-app-lifecycle-service"
+BOSH2_NAME="micro-bosh"
 
 # DEPLOY
 bosh -e ${BOSH2_NAME} -n -d ${DEPLOYMENT_NAME} deploy --no-redact manifests/${DEPLOYMENT_NAME}.yml \
     -o manifests/ops-files/vsphere-network.yml \
     -l manifests/vars.yml \
     -v deployment_name=${DEPLOYMENT_NAME}
-

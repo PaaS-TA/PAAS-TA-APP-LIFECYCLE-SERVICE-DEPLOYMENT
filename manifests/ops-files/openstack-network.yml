@@ -1,11 +1,13 @@
+---
+
 - type: replace
-  path: /instance_groups/name=taiga/networks/name=((private_networks_name))
+  path: /instance_groups/name=app-lifecycle/networks/name=((private_networks_name))
   value:
     name: ((private_networks_name))
     default: [dns, gateway]
+
 - type: replace
-  path: /instance_groups/name=taiga/networks/name=((public_networks_name))
+  path: /instance_groups/name=app-lifecycle/networks/name=((public_networks_name))
   value:
     name: ((public_networks_name))
-    static_ips: ((public_networks_ips))
-
+    static_ips: ((app_lifecycle_public_ips))
