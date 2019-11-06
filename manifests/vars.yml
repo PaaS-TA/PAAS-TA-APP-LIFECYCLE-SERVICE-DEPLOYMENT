@@ -42,5 +42,5 @@ app_lifecycle_azs: [z3]                                                         
 app_lifecycle_instances: 2                                                           # app-lifecycle : instances (N)
 app_lifecycle_persistent_disk_type: "20GB"                                           # app-lifecycle : persistent_disk_type
 app_lifecycle_public_ips: "<APP_LIFECYCLE_PUBLIC_IPS>"                               # app-lifecycle : public ips (ex. ["00.00.00.00" , "11.11.11.11"]
-app_lifecycle_admin_password: "<APP_LIFECYCLE_ADMIN_PASSWORD>"                       # app-lifecycle : app-lifecycle admin password (e.g. "admin!super")
+app_lifecycle_admin_password: "<APP_LIFECYCLE_ADMIN_PASSWORD>"                       # app-lifecycle : app-lifecycle super admin password (e.g. "admin!super")
 app_lifecycle_serviceadmin_password: "<APP_LIFECYCLE_SERVICEADMIN_INIT_PASSWORD>"    # app-lifecycle : app-lifecycle serviceadmin user init password (e.g. "Service!admin")
