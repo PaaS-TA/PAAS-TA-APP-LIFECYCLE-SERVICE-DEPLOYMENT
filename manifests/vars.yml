@@ -34,13 +34,13 @@ broker_services_id: "<SERVICE_BROKER_SERVICES_GUID>"                            
 broker_services_plans_id: "<SERVICE_BROKER_SERVICES_PLANS_GUID>"                     # service-broker : service plan id (e.g. "6eb97b3e-91db-4880-ad8a-503003e8e7dd")
 bosh_client_id: "<BOSH_CLIENT_ID>"                                                   # service-broker : bosh client id
 bosh_client_secret: "<BOSH_CLIENT_SECRET>"                                           # service-broker : bosh client secret
-bosh_url: "<BOSH_URL>"                                                               # service-broker : bosh url (ex. https://00.000.0.0:25555)
-bosh_oauth_url: "<BOSH_OAUTH_URL>"                                                   # service-broker : bosh oauth url (ex. https://00.000.0.0:8443)
+bosh_url: "<BOSH_URL>"                                                               # service-broker : bosh url (e.g. https://00.000.0.0:25555)
+bosh_oauth_url: "<BOSH_OAUTH_URL>"                                                   # service-broker : bosh oauth url (e.g. https://00.000.0.0:8443)
 
 # APP-LIFECYCLE
 app_lifecycle_azs: [z3]                                                              # app-lifecycle : azs
 app_lifecycle_instances: 2                                                           # app-lifecycle : instances (N)
 app_lifecycle_persistent_disk_type: "20GB"                                           # app-lifecycle : persistent_disk_type
-app_lifecycle_public_ips: "<APP_LIFECYCLE_PUBLIC_IPS>"                               # app-lifecycle : public ips (ex. ["00.00.00.00" , "11.11.11.11"]
+app_lifecycle_public_ips: "<APP_LIFECYCLE_PUBLIC_IPS>"                               # app-lifecycle : public ips (e.g. ["00.00.00.00" , "11.11.11.11"]
 app_lifecycle_admin_password: "<APP_LIFECYCLE_ADMIN_PASSWORD>"                       # app-lifecycle : app-lifecycle super admin password (e.g. "admin!super")
 app_lifecycle_serviceadmin_password: "<APP_LIFECYCLE_SERVICEADMIN_INIT_PASSWORD>"    # app-lifecycle : app-lifecycle serviceadmin user init password (e.g. "Service!admin")
